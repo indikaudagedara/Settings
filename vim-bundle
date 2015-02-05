@@ -1,0 +1,9 @@
+### pathogen in .vim/autoload
+
+### packages inside .vim/bundle
+cscope-ctags <-- modified
+ctrlp
+nerdtree
+tagbar
+vim-multiple-cursors
+vim-nerdtree-tabs
