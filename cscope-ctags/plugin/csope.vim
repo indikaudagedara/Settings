@@ -106,14 +106,14 @@ if has("cscope")
     " can be simulated roughly via:
     "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>
 
-    nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+    "nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    "nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
     " Hitting CTRL-space *twice* before the search type does a vertical
@@ -132,11 +132,25 @@ if has("cscope")
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
     " Perform cscope commands in new tab
-    cnoremap tcf tab cs find f
     cnoremap tcs tab cs find s
     cnoremap tcg tab cs find g
-    cnoremap tcd tab cs find d
+    cnoremap tcc tab cs find c
+    cnoremap tct tab cs find t
     cnoremap tce tab cs find e
+    cnoremap tcf tab cs find f
+    cnoremap tci tab cs find i
+    cnoremap tcd tab cs find d
+
+    nmap <C-@>s :tab cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g :tab cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c :tab cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>t :tab cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>e :tab cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>f :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@>i :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-@>d :tab cs find d <C-R>=expand("<cword>")<CR><CR>
+
+
 
     """"""""""""" key map timeouts
     "
