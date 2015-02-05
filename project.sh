@@ -1,3 +1,9 @@
+
+# poor man's project management (for C/C++ use with vim)
+# don't run this but source as it sets env variables
+# eg. alias p='. project.sh'
+
+
 if [[ $# -lt 1 ]]; then
         echo "$0 option [arg]"
         echo "  i(init) [project]"
@@ -21,7 +27,7 @@ _exec() {
 init_proj() {
         proj=$1
 
-        echo "--> init $proj"
+        echo "--> init project '$proj'"
 
         pf=$DIR/${proj}.project
 
@@ -64,11 +70,15 @@ set_proj() {
         pf=$DIR/${proj}.project
 
         if [[ ! -e $pf ]]; then
-                echo "no $pf"
+                echo "--> no project '$proj'. unsetting"
+                export PROJECT=""
+                export FILES_DB=""
+                export CSCOPE_DB=""
+                export TAGS_DB=""
                 return 0
         fi
 
-        echo "--> set $proj"
+        echo "--> set project '$proj'"
 
         # cscope files
         csf=$DIR/${proj}.files
@@ -111,7 +121,7 @@ set_proj() {
 del_proj() {
         proj=$1
 
-        echo "--> del $proj"
+        echo "--> del project '$proj'"
 
         pf=$DIR/${proj}.project
 
@@ -129,7 +139,7 @@ del_proj() {
 check_proj() {
 
         if [[ "$PROJECT" == "" ]]; then
-                echo "project not set"
+                echo "--> no project set"
                 return 0
         fi
 
@@ -147,7 +157,7 @@ case $1 in
                 fi
 
                 if [[ "$proj" == "" ]]; then
-                        echo "set project or pass a new one"
+                        echo "--> set project or pass a new one"
                         return
                 fi
                 init_proj $proj
