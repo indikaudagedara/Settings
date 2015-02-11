@@ -2,6 +2,16 @@
 # poor man's project management (for C/C++ use with vim)
 # don't run this but source as it sets env variables
 # eg. alias p='. project.sh'
+# also is useful to have this shell alias to open files in the same vim instance
+#
+# v() {
+#       if [[ "$_PROJECT" != "" ]]; then
+#               vim --servername $_PROJECT --remote-tab-silent $@
+#               return
+#       fi
+#
+#       vim $@
+# }
 
 if [[ $# -lt 1 ]]; then
         echo "$0 option [arg]"
