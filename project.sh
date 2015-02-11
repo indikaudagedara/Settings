@@ -3,7 +3,6 @@
 # don't run this but source as it sets env variables
 # eg. alias p='. project.sh'
 
-
 if [[ $# -lt 1 ]]; then
         echo "$0 option [arg]"
         echo "  i(init) [project]"
@@ -71,7 +70,7 @@ set_proj() {
 
         if [[ ! -e $pf ]]; then
                 echo "--> no project '$proj'. unsetting"
-                export PROJECT=""
+                export _PROJECT=""
                 export FILES_DB=""
                 export CSCOPE_DB=""
                 export TAGS_DB=""
@@ -113,7 +112,7 @@ set_proj() {
                 export TAGS_DB=""
         fi
 
-        export PROJECT=$proj
+        export _PROJECT=$proj
 
         return 1
 }
@@ -138,12 +137,12 @@ del_proj() {
 
 check_proj() {
 
-        if [[ "$PROJECT" == "" ]]; then
+        if [[ "$_PROJECT" == "" ]]; then
                 echo "--> no project set"
                 return 0
         fi
 
-        echo "--> $PROJECT"
+        echo "--> $_PROJECT"
         return 1
 }
 
@@ -151,7 +150,7 @@ case $1 in
         i)
                 proj=""
                 if [[ $# -ne 2 ]]; then
-                        proj=$PROJECT
+                        proj=$_PROJECT
                 else
                         proj=$2
                 fi
@@ -173,7 +172,7 @@ case $1 in
         d)
                 proj=""
                 if [[ $# -ne 2 ]]; then
-                        proj=$PROJECT
+                        proj=$_PROJECT
                 else
                         proj=$2
                 fi
@@ -198,7 +197,7 @@ case $1 in
 
                 check_proj; [[ $? != 1 ]] && return
 
-                proj=$PROJECT
+                proj=$_PROJECT
                 pf=$DIR/${proj}.project
                 echo "$PWD/$2" >> $pf
 
@@ -211,7 +210,7 @@ case $1 in
         l)
                 check_proj; [[ $? != 1 ]] && return
 
-                proj=$PROJECT
+                proj=$_PROJECT
                 pf=$DIR/${proj}.project
                 cat $pf
                 return
@@ -221,15 +220,15 @@ case $1 in
         e)
                 check_proj; [[ $? != 1 ]] && return
 
-                proj=$PROJECT
+                proj=$_PROJECT
                 pf=$DIR/${proj}.project
                 vim $pf
                 return
         ;;
 
         la)
-                if [[ "$PROJECT" != "" ]]; then
-                        echo "--> $PROJECT"
+                if [[ "$_PROJECT" != "" ]]; then
+                        echo "--> $_PROJECT"
                 fi
 
                 for i in `ls $DIR/*.project`; do
