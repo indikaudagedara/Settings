@@ -18,6 +18,7 @@ if [[ $# -lt 1 ]]; then
         echo "  i(init) [project]"
         echo "  s(set) project"
         echo "  d(delete) [project]"
+        echo "  cd(change dir) [number]"
         echo "  a(add) directory"
         echo "  l(list project)"
         echo "  e(edit project)"
@@ -245,6 +246,25 @@ case $1 in
                         basename $i | sed 's/\.project//'
                 done
                 return
+        ;;
+
+        cd)
+
+                check_proj; [[ $? != 1 ]] && return
+
+                proj=$_PROJECT
+                pf=$DIR/${proj}.project
+
+                num=1
+                if [[ $# -eq 2 ]]; then
+                        num=$2
+                fi
+
+                dir=$(sed -n "$num p" $pf)
+
+                if [[ "$dir" != "" ]]; then
+                        cd $dir
+                fi
         ;;
 
         *)
