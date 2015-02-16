@@ -75,7 +75,6 @@ set_proj() {
 
         proj=$1
 
-        DIR=~/projects
         pf=$DIR/${proj}.project
 
         if [[ ! -e $pf ]]; then
@@ -98,29 +97,30 @@ set_proj() {
         ctf=$DIR/${proj}.tags
 
         lns=`wc -l $csf | cut -f 1 -d ' '`
-        echo "files=$lns"
         if [[ "$lns" != "0" ]]; then
                 export FILES_DB=$csf
         else
                 export FILES_DB=""
         fi
-
+        printf "files= %8d    FILES_DB=%s\n" $lns $FILES_DB
 
         lns=`wc -l $csrf | cut -f 1 -d ' '`
-        echo "csope=$lns"
         if [[ "$lns" != "0" ]]; then
                 export CSCOPE_DB=$csrf
         else
                 export CSCOPE_DB=""
         fi
+        printf "cscope=%8d    CSCOPE_DB=%s\n" $lns $CSCOPE_DB
 
         lns=`wc -l $ctf | cut -f 1 -d ' '`
-        echo "ctags=$lns"
         if [[ "$lns" != "0" ]]; then
                 export TAGS_DB=$ctf
         else
                 export TAGS_DB=""
         fi
+        printf "ctags= %8d    TAGS_DB=%s\n" $lns $TAGS_DB
+
+        cat -n $pf
 
         export _PROJECT=$proj
 
@@ -152,7 +152,7 @@ check_proj() {
                 return 0
         fi
 
-        echo "--> $_PROJECT"
+        echo "--> current '$_PROJECT'"
         return 1
 }
 
@@ -222,7 +222,7 @@ case $1 in
 
                 proj=$_PROJECT
                 pf=$DIR/${proj}.project
-                cat $pf
+                cat -n $pf
                 return
 
         ;;
