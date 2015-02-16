@@ -25,10 +25,12 @@ noremap <C-L><C-L> :set invlist<CR>
 set smartindent
 noremap <C-I><C-I> :set invsmartindent<CR>
 
+"~/.user_profile
 
 " tabs
-noremap <leader>t  :tabnew<CR>
+noremap <leader>tn :tabnew<CR>
 noremap <leader>e  :tabe
+noremap <leader>te  <C-w>gF
 noremap <C-Up>     :tabm -1<CR>
 noremap <C-Down>   :tabm +1<CR>
 noremap <C-Right>  :tabnext<CR>
@@ -42,17 +44,21 @@ noremap <leader>s  :echo v:servername<CR>
 noremap <leader>pp :setlocal paste<CR>i
 noremap <leader>np :setlocal nopaste<CR>
 
+noremap <C-j>      5j
+noremap <C-k>      5k
+
 " ------------------------------------------
 " from plugins
 " ------------------------------------------
 
 " tags
 noremap <C-t>      :CtrlPTag<CR>
+noremap <leader>r  :CtrlPMRU<CR>
 
 " from NERD tree tabs
 noremap NN         :NERDTreeTabsToggle<CR>
 
-noremap <F8>       :TagbarToggle<CR>
+noremap <leader>f  :TagbarToggle<CR>
 
 
 " shell command wrapper
