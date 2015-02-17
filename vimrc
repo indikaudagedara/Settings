@@ -30,16 +30,16 @@ noremap <C-I><C-I> :set invsmartindent<CR>
 " tabs
 noremap <leader>tn :tabnew<CR>
 noremap <leader>e  :tabe
-noremap <leader>te  <C-w>gF
-noremap <C-Left>     :tabm -1<CR>
-noremap <C-Right>   :tabm +1<CR>
-noremap <C-Up>  :tabnext<CR>
+noremap <leader>te <C-w>gF
+noremap <C-Left>   :tabm -1<CR>
+noremap <C-Right>  :tabm +1<CR>
+noremap <C-Up>     :tabnext<CR>
 noremap <C-Down>   :tabprev<CR>
 
 " misc
 noremap <leader>w  :w!<CR>
-noremap <leader>q  :wq!<CR>
-noremap <leader>x  :q!<CR>
+noremap <leader>wq :wq!<CR>
+noremap <leader>q  :q!<CR>
 noremap <leader>s  :echo v:servername<CR>
 noremap <leader>pp :setlocal paste<CR>i
 noremap <leader>np :setlocal nopaste<CR>
