@@ -31,10 +31,10 @@ noremap <C-I><C-I> :set invsmartindent<CR>
 noremap <leader>tn :tabnew<CR>
 noremap <leader>e  :tabe
 noremap <leader>te  <C-w>gF
-noremap <C-Up>     :tabm -1<CR>
-noremap <C-Down>   :tabm +1<CR>
-noremap <C-Right>  :tabnext<CR>
-noremap <C-left>   :tabprev<CR>
+noremap <C-Left>     :tabm -1<CR>
+noremap <C-Right>   :tabm +1<CR>
+noremap <C-Up>  :tabnext<CR>
+noremap <C-Down>   :tabprev<CR>
 
 " misc
 noremap <leader>w  :w!<CR>
