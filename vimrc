@@ -25,23 +25,22 @@ noremap <C-L><C-L> :set invlist<CR>
 set smartindent
 noremap <C-I><C-I> :set invsmartindent<CR>
 
-"~/.user_profile
-
 " tabs
 noremap <leader>tn :tabnew<CR>
+noremap <leader>ts :tab split<CR>
 noremap <leader>e  :tabe
 noremap <leader>te <C-w>gF
 noremap <C-Left>   :tabm -1<CR>
 noremap <C-Right>  :tabm +1<CR>
-noremap <C-Up>     :tabnext<CR>
-noremap <C-Down>   :tabprev<CR>
+noremap <C-Up>     :tabprev<CR>
+noremap <C-Down>   :tabnext<CR>
 
 " misc
 noremap <leader>w  :w!<CR>
 noremap <leader>wq :wq!<CR>
 noremap <leader>q  :q!<CR>
 noremap <leader>s  :echo v:servername<CR>
-noremap <leader>pp :setlocal paste<CR>i
+noremap <leader>pp :setlocal paste<CR>
 noremap <leader>np :setlocal nopaste<CR>
 
 noremap <C-j>      5j
