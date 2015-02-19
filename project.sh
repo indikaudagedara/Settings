@@ -13,16 +13,22 @@
 #       vim $@
 # }
 
+_help() {
+        echo "Usage: p option [arg]"
+        echo "Options:"
+        echo "  i [project] - init project and build file/tags dbs"
+        echo "  s project   - set project env variables"
+        echo "  d [project] - delete project"
+        echo "  cd [number] - change directory"
+        echo "  a directory - add directory"
+        echo "  l           - list project"
+        echo "  e           - edit project"
+        echo "  la          - list all projects"
+        echo "  h           - show this help"
+}
+
 if [[ $# -lt 1 ]]; then
-        echo "$0 option [arg]"
-        echo "  i(init) [project]"
-        echo "  s(set) project"
-        echo "  d(delete) [project]"
-        echo "  cd(change dir) [number]"
-        echo "  a(add) directory"
-        echo "  l(list project)"
-        echo "  e(edit project)"
-        echo "  la(list all projects)"
+        _help
         return
 fi
 
@@ -263,8 +269,13 @@ case $1 in
                 dir=$(sed -n "$num p" $pf)
 
                 if [[ "$dir" != "" ]]; then
-                        cd $dir
+                        _exec "cd $dir"
                 fi
+        ;;
+
+        h)
+                _help
+                return
         ;;
 
         *)
