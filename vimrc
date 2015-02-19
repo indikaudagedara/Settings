@@ -12,6 +12,10 @@ set laststatus=2
 " make backspace behave like other apps
 set backspace=indent,eol,start
 
+"highlight TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+"highlight TabLine ctermfg=Blue ctermbg=Yellow
+highlight TabLineSel ctermfg=Red
+
 " highlight search
 set hlsearch
 
