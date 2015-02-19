@@ -60,6 +60,8 @@ init_proj() {
         touch $csrf
         touch $ctf
 
+        echo -n "" > $csf
+
         for dir in `cat $pf`; do
                 _exec "find $dir/. -type f | egrep -i \"\.(c|h|cpp)$\" >> $csf"
         done
@@ -150,6 +152,11 @@ del_proj() {
         ctf=$DIR/${proj}.tags
 
         rm -f $pf $csf $csrf $ctf
+
+        export _PROJECT=""
+        export FILES_DB=""
+        export CSCOPE_DB=""
+        export TAGS_DB=""
 }
 
 check_proj() {
