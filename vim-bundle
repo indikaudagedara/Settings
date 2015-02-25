@@ -1,3 +1,6 @@
+build
+./configure --with-features=huge --enable-gui=gnome2 --enable-cscope --prefix=$HOME
+
 ### pathogen in .vim/autoload
 
 ### packages inside .vim/bundle
