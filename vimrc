@@ -1,6 +1,12 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+
+
+" ------------------------------------------
+" settings
+" ------------------------------------------
+
 syntax on
 
 " open new files in tabs
@@ -15,9 +21,15 @@ set backspace=indent,eol,start
 " highlight search
 set hlsearch
 
+set number
+set smartindent
+
+
+
 " ------------------------------------------
 " colours
 " ------------------------------------------
+
 if $TERM == "xterm-256color"
   set t_Co=256
 endif
@@ -28,15 +40,20 @@ highlight ColorColumn ctermbg=235
 "highlight TabLineFill ctermbg=LightGrey
 highlight TabLineSel ctermfg=Red
 
+
+
+" ------------------------------------------
+" key bindings
+" ------------------------------------------
+
 " hit enter after search to clear highlight
-nnoremap <CR>      :nohlsearch<CR>
+nnoremap <CR>       :nohlsearch<CR>
 
-set number
-noremap <C-N><C-N> :set invnumber<CR>
-noremap <C-L><C-L> :set invlist<CR>
 
-set smartindent
-noremap <leader>si :set invsmartindent<CR>
+noremap <C-N><C-N>  :set invnumber<CR>
+noremap <C-L><C-L>  :set invlist<CR>
+
+noremap <leader>si  :set invsmartindent<CR>
 
 " tabs
 noremap <leader>tn  :tabnew<CR>
@@ -48,7 +65,6 @@ noremap <C-Right>   :tabm +1<CR>
 noremap <C-Up>      :tabprev<CR>
 noremap <C-Down>    :tabnext<CR>
 
-
 " misc
 noremap <leader>w   :w!<CR>
 noremap <leader>wq  :wq!<CR>
@@ -59,8 +75,29 @@ noremap <leader>np  :setlocal nopaste<CR>
 noremap <leader>cc  :set colorcolumn=80<CR>
 noremap <leader>ncc :set colorcolumn=0<CR>
 
-noremap <C-j>      5j
-noremap <C-k>      5k
+noremap <C-j>       5j
+noremap <C-k>       5k
+
+
+
+" ------------------------------------------
+" key bindings for plugins
+" ------------------------------------------
+
+" tags
+noremap <C-t>       :CtrlPTag<CR>
+noremap <leader>r   :CtrlPMRU<CR>
+
+" from NERD tree tabs
+noremap NN          :NERDTreeTabsToggle<CR>
+
+noremap <leader>f   :TagbarToggle<CR>
+
+
+
+" ------------------------------------------
+" autocmds
+" ------------------------------------------
 
 " remove trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
@@ -74,19 +111,11 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 " all files
 "autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+
+
 " ------------------------------------------
-" from plugins
+" new commands/functions
 " ------------------------------------------
-
-" tags
-noremap <C-t>      :CtrlPTag<CR>
-noremap <leader>r  :CtrlPMRU<CR>
-
-" from NERD tree tabs
-noremap NN         :NERDTreeTabsToggle<CR>
-
-noremap <leader>f  :TagbarToggle<CR>
-
 
 " shell command wrapper
 " shows command output in same window
