@@ -12,12 +12,21 @@ set laststatus=2
 " make backspace behave like other apps
 set backspace=indent,eol,start
 
-"highlight TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-"highlight TabLine ctermfg=Blue ctermbg=Yellow
-highlight TabLineSel ctermfg=Red
-
 " highlight search
 set hlsearch
+
+" ------------------------------------------
+" colours
+" ------------------------------------------
+if $TERM == "xterm-256color"
+  set t_Co=256
+endif
+
+highlight ColorColumn ctermbg=235
+
+"highlight TabLine ctermfg=Blue ctermbg=Yellow
+"highlight TabLineFill ctermbg=LightGrey
+highlight TabLineSel ctermfg=Red
 
 " hit enter after search to clear highlight
 nnoremap <CR>      :nohlsearch<CR>
@@ -27,28 +36,43 @@ noremap <C-N><C-N> :set invnumber<CR>
 noremap <C-L><C-L> :set invlist<CR>
 
 set smartindent
-noremap <C-I><C-I> :set invsmartindent<CR>
+noremap <leader>si :set invsmartindent<CR>
 
 " tabs
-noremap <leader>tn :tabnew<CR>
-noremap <leader>ts :tab split<CR>
-noremap <leader>e  :tabe
-noremap <leader>te <C-w>gF
-noremap <C-Left>   :tabm -1<CR>
-noremap <C-Right>  :tabm +1<CR>
-noremap <C-Up>     :tabprev<CR>
-noremap <C-Down>   :tabnext<CR>
+noremap <leader>tn  :tabnew<CR>
+noremap <leader>ts  :tab split<CR>
+noremap <leader>e   :tabe
+noremap <leader>te  <C-w>gF
+noremap <C-Left>    :tabm -1<CR>
+noremap <C-Right>   :tabm +1<CR>
+noremap <C-Up>      :tabprev<CR>
+noremap <C-Down>    :tabnext<CR>
+
 
 " misc
-noremap <leader>w  :w!<CR>
-noremap <leader>wq :wq!<CR>
-noremap <leader>q  :q!<CR>
-noremap <leader>s  :echo v:servername<CR>
-noremap <leader>pp :setlocal paste<CR>
-noremap <leader>np :setlocal nopaste<CR>
+noremap <leader>w   :w!<CR>
+noremap <leader>wq  :wq!<CR>
+noremap <leader>q   :q!<CR>
+noremap <leader>s   :echo v:servername<CR>
+noremap <leader>pp  :setlocal paste<CR>
+noremap <leader>np  :setlocal nopaste<CR>
+noremap <leader>cc  :set colorcolumn=80<CR>
+noremap <leader>ncc :set colorcolumn=0<CR>
 
 noremap <C-j>      5j
 noremap <C-k>      5k
+
+" remove trailing whitespace
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+" all files
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ------------------------------------------
 " from plugins
