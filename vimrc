@@ -32,13 +32,15 @@ set smartindent
 
 set t_Co=256
 
+colorscheme molokai
 highlight ColorColumn ctermbg=235
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
 "highlight TabLineFill ctermbg=LightGrey
 highlight TabLineSel ctermfg=Red
 
-highlight MatchParen cterm=underline ctermbg=none
+"highlight MatchParen cterm=underline ctermbg=none
+"highlight Search ctermfg=Black
 
 
 
