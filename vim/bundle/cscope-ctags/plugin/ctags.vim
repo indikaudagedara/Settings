@@ -6,4 +6,3 @@ set tags=./tags;,tags
 if $TAGS_DB != "" && filereadable($TAGS_DB)
     set tags+=$TAGS_DB
 endif
-udagedai
