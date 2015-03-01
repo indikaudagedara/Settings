@@ -24,7 +24,7 @@ set hlsearch
 set number
 set smartindent
 
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
 
 " ------------------------------------------
 " colours
@@ -74,7 +74,7 @@ noremap <leader>q   :q!<CR>
 noremap <leader>s   :echo v:servername<CR>
 noremap <leader>pp  :setlocal paste<CR>
 noremap <leader>np  :setlocal nopaste<CR>
-noremap <leader>cc  :set colorcolumn=80<CR>
+noremap <leader>cc  :set colorcolumn=80,100<CR>
 noremap <leader>ncc :set colorcolumn=0<CR>
 
 noremap <C-j>       5j
