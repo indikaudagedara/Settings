@@ -23,8 +23,7 @@ set hlsearch
 
 set number
 set smartindent
-
-
+set autoindent
 
 " ------------------------------------------
 " colours
@@ -34,6 +33,7 @@ set t_Co=256
 
 colorscheme molokai
 highlight ColorColumn ctermbg=235
+highlight Search term=reverse ctermfg=0 ctermbg=228
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
 "highlight TabLineFill ctermbg=LightGrey
@@ -71,6 +71,7 @@ noremap <C-Down>    :tabnext<CR>
 noremap <leader>w   :w!<CR>
 noremap <leader>wq  :wq!<CR>
 noremap <leader>q   :q!<CR>
+noremap <leader>qa  :qa!<CR>
 noremap <leader>s   :echo v:servername<CR>
 noremap <leader>pp  :setlocal paste<CR>
 noremap <leader>np  :setlocal nopaste<CR>
@@ -109,7 +110,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType c,cpp,java,php,ruby,python autocmd,sh BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 " all files
 "autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
