@@ -32,13 +32,16 @@ set autoindent
 set t_Co=256
 
 colorscheme molokai
-highlight ColorColumn ctermbg=235
-highlight Search term=reverse ctermfg=0 ctermbg=228
+highlight ColorColumn ctermbg=237
+"highlight Search cterm=reverse ctermfg=0 ctermbg=229
+highlight Search  ctermfg=0 ctermbg=229
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
-"highlight TabLineFill ctermbg=LightGrey
-highlight TabLineSel ctermfg=Red
 
+highlight TabLineSel ctermfg=Red
+highlight Visual ctermbg=238
+"highlight TabLine cterm=none ctermfg=0 ctermbg=7
+"highlight TabLineFill ctermfg=242
 "highlight MatchParen cterm=underline ctermbg=none
 "highlight Search ctermfg=Black
 
@@ -55,7 +58,7 @@ nnoremap <CR>       :nohlsearch<CR>
 noremap <C-N><C-N>  :set invnumber<CR>
 noremap <C-L><C-L>  :set invlist<CR>
 
-noremap <leader>si  :set invsmartindent<CR>
+noremap <leader>si  :set invsmartindent \| set invautoindent<CR>
 
 " tabs
 noremap <leader>tn  :tabnew<CR>
@@ -69,9 +72,9 @@ noremap <C-Down>    :tabnext<CR>
 
 " misc
 noremap <leader>w   :w!<CR>
-noremap <leader>wq  :wq!<CR>
+noremap <leader>W   :wq!<CR>
 noremap <leader>q   :q!<CR>
-noremap <leader>qa  :qa!<CR>
+noremap <leader>Q   :qa!<CR>
 noremap <leader>s   :echo v:servername<CR>
 noremap <leader>pp  :setlocal paste<CR>
 noremap <leader>np  :setlocal nopaste<CR>
