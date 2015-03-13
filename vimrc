@@ -1,6 +1,6 @@
+
 call pathogen#infect()
 call pathogen#helptags()
-
 
 
 " ------------------------------------------
@@ -25,6 +25,7 @@ set number
 set smartindent
 set autoindent
 
+
 " ------------------------------------------
 " colours
 " ------------------------------------------
@@ -32,19 +33,16 @@ set autoindent
 set t_Co=256
 
 colorscheme molokai
+
 highlight ColorColumn ctermbg=237
-"highlight Search cterm=reverse ctermfg=0 ctermbg=229
 highlight Search  ctermfg=0 ctermbg=229
+"highlight MatchParen cterm=underline ctermbg=none
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
-
 highlight TabLineSel ctermfg=Red
-highlight Visual ctermbg=238
-"highlight TabLine cterm=none ctermfg=0 ctermbg=7
-"highlight TabLineFill ctermfg=242
-"highlight MatchParen cterm=underline ctermbg=none
-"highlight Search ctermfg=Black
+highlight TabLineFill ctermfg=244
 
+highlight Visual ctermbg=238
 
 
 " ------------------------------------------
@@ -53,7 +51,6 @@ highlight Visual ctermbg=238
 
 " hit enter after search to clear highlight
 nnoremap <CR>       :nohlsearch<CR>
-
 
 noremap <C-N><C-N>  :set invnumber<CR>
 noremap <C-L><C-L>  :set invlist<CR>
@@ -71,10 +68,10 @@ noremap <C-Up>      :tabprev<CR>
 noremap <C-Down>    :tabnext<CR>
 
 " misc
-noremap <leader>w   :w!<CR>
-noremap <leader>W   :wq!<CR>
-noremap <leader>q   :q!<CR>
-noremap <leader>Q   :qa!<CR>
+noremap <leader>w   :w<CR>
+noremap <leader>W   :wq<CR>
+noremap <leader>q   :q<CR>
+noremap <leader>Q   :qa<CR>
 noremap <leader>s   :echo v:servername<CR>
 noremap <leader>pp  :setlocal paste<CR>
 noremap <leader>np  :setlocal nopaste<CR>
@@ -83,7 +80,6 @@ noremap <leader>ncc :set colorcolumn=0<CR>
 
 noremap <C-j>       5j
 noremap <C-k>       5k
-
 
 
 " ------------------------------------------
@@ -95,10 +91,9 @@ noremap <C-t>       :CtrlPTag<CR>
 noremap <leader>r   :CtrlPMRU<CR>
 
 " from NERD tree tabs
-noremap NN          :NERDTreeTabsToggle<CR>
+noremap <leader>NN  :NERDTreeTabsToggle<CR>
 
 noremap <leader>f   :TagbarToggle<CR>
-
 
 
 " ------------------------------------------
@@ -116,7 +111,6 @@ endfun
 autocmd FileType c,cpp,java,php,ruby,python,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 " all files
 "autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 
 
 " ------------------------------------------
