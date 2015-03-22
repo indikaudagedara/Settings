@@ -70,6 +70,19 @@ init_proj() {
 
         lns=`wc -l $csf | cut -f 1 -d ' '`
 
+        # cscope/ctags
+        # ctags -> provides symbols
+        # cscope -> provides references ie. callers/called
+
+        # 1. find all files to search
+        # find $PWD/. | egrep -i "\.(c|h)" > cscope.files
+
+        # 2. generate cscope cross references
+        # cscope -b # it reads cscope.files and outputs a cscope.out file
+
+        # 3. generate tags for the files
+        # ctags -L cscope.files
+
         if [[ "$lns" != "0" ]]; then
 
 
