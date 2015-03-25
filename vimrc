@@ -89,7 +89,7 @@ noremap <C-j>       5j
 noremap <C-k>       5k
 
 " remove the Q mapping because I mistakenly type it
-" but never want to go to Ex - type gQ instead
+" but never want to go to Ex -  type gQ instead
 nnoremap Q          <Nop>
 
 
