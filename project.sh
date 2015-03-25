@@ -10,7 +10,7 @@
 #               return
 #       fi
 #
-#       vim $@
+#       vim -p $@
 # }
 
 _help() {
