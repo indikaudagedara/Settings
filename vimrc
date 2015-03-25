@@ -22,8 +22,13 @@ set backspace=indent,eol,start
 set hlsearch
 
 set number
-set smartindent
+"set smartindent
 set autoindent
+
+" enable mouse in all modes
+set mouse=a
+
+autocmd BufNewFile,BufRead *.i  set syntax=sh
 
 
 " ------------------------------------------
@@ -61,6 +66,8 @@ noremap <leader>si  :set invsmartindent \| set invautoindent<CR>
 noremap <leader>tn  :tabnew<CR>
 noremap <leader>ts  :tab split<CR>
 noremap <leader>e   :tabe
+
+"open file under cursor in new tab
 noremap <leader>te  <C-w>gF
 noremap <C-Left>    :tabm -1<CR>
 noremap <C-Right>   :tabm +1<CR>
@@ -84,6 +91,7 @@ noremap <C-k>       5k
 " remove the Q mapping because I mistakenly type it
 " but never want to go to Ex - type gQ instead
 nnoremap Q          <Nop>
+
 
 " ------------------------------------------
 " key bindings for plugins
