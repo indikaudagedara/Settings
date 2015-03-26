@@ -41,6 +41,7 @@ colorscheme molokai
 
 highlight ColorColumn ctermbg=237
 highlight Search  ctermfg=0 ctermbg=229
+highlight MatchParen ctermfg=none ctermbg=none
 "highlight MatchParen cterm=underline ctermbg=none
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
