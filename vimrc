@@ -55,6 +55,10 @@ highlight Visual ctermbg=238
 " key bindings
 " ------------------------------------------
 
+" because Esc is just pain
+imap     jj         <Esc>
+
+
 " hit enter after search to clear highlight
 nnoremap <CR>       :nohlsearch<CR>
 
