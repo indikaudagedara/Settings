@@ -56,9 +56,10 @@ init_proj() {
         ctf=$DIR/${proj}.tags
 
         touch $pf
-        touch $csf
-        touch $csrf
-        touch $ctf
+
+        echo -n "" > $csf
+	echo -n "" > $csrf
+	echo -n "" > $ctf
 
         echo -n "" > $csf
 
