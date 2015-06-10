@@ -30,6 +30,13 @@ set mouse=a
 
 autocmd BufNewFile,BufRead *.i  set syntax=sh
 
+let g:formatprg_c = "astyle"
+" -H   insert space after if/for/while ... and bracket
+" -U   remove extra spaces around if/for/while ...
+" -p   insert padding around operators 
+" -c   convert tabs to spaces in non-indentation parts of the code
+" -m0  align multi-line statements to paren on previous line
+let g:formatprg_args_c = "--style=attach -pcHU --align-pointer=type --indent=tab -m0"
 
 " ------------------------------------------
 " colours
