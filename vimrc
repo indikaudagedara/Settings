@@ -96,6 +96,7 @@ noremap <leader>pp  :setlocal paste<CR>
 noremap <leader>np  :setlocal nopaste<CR>
 noremap <leader>cc  :set colorcolumn=80,100<CR>
 noremap <leader>ncc :set colorcolumn=0<CR>
+noremap <leader>S   :call InvSyntax()<CR>
 
 noremap <C-j>       5j
 noremap <C-k>       5k
@@ -175,4 +176,13 @@ function! s:RunShellCommand(cmdline)
         silent execute '$read !'. expanded_cmdline
 
         1
+endfunction
+
+" invert syntax
+function! InvSyntax()
+	if exists("g:syntax_on")
+		execute 'syntax off'
+	else
+		execute 'syntax on'
+	endif
 endfunction
