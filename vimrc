@@ -1,7 +1,5 @@
-
 call pathogen#infect()
 call pathogen#helptags()
-
 
 " ------------------------------------------
 " settings
@@ -30,12 +28,12 @@ set mouse=a
 
 autocmd BufNewFile,BufRead *.i  set syntax=sh
 
-let g:formatprg_c = "astyle"
 " -H   insert space after if/for/while ... and bracket
 " -U   remove extra spaces around if/for/while ...
 " -p   insert padding around operators 
 " -c   convert tabs to spaces in non-indentation parts of the code
 " -m0  align multi-line statements to paren on previous line
+let g:formatprg_c = "astyle"
 let g:formatprg_args_c = "--style=attach -pcHU --align-pointer=type --indent=tab -m0"
 
 " ------------------------------------------
@@ -48,7 +46,7 @@ colorscheme molokai
 
 highlight ColorColumn ctermbg=237
 highlight Search  ctermfg=0 ctermbg=229
-highlight MatchParen ctermfg=none ctermbg=none
+"highlight MatchParen ctermfg=none ctermbg=none
 "highlight MatchParen cterm=underline ctermbg=none
 
 "highlight TabLine ctermfg=Blue ctermbg=Yellow
@@ -97,6 +95,7 @@ noremap <leader>np  :setlocal nopaste<CR>
 noremap <leader>cc  :set colorcolumn=80,100<CR>
 noremap <leader>ncc :set colorcolumn=0<CR>
 noremap <leader>S   :call InvSyntax()<CR>
+noremap <leader>ff  :call AstyleFormat()<CR>
 
 noremap <C-j>       5j
 noremap <C-k>       5k
@@ -126,10 +125,10 @@ noremap <leader>f   :TagbarToggle<CR>
 
 " remove trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
-        let l = line(".")
-        let c = col(".")
-        %s/\s\+$//e
-        call cursor(l, c)
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
 endfun
 
 autocmd FileType c,cpp,java,php,ruby,python,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
@@ -145,37 +144,37 @@ autocmd FileType c,cpp,java,php,ruby,python,sh autocmd BufWritePre <buffer> :cal
 " shows command output in same window
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
-        let isfirst = 1
-        let words = []
-        for word in split(a:cmdline)
-                if isfirst
-                        let isfirst = 0  " don't change first word (shell command)
-                else
-                if word[0] =~ '\v[%#<]'
-                        let word = expand(word)
-                endif
-                        let word = shellescape(word, 1)
-                endif
-                call add(words, word)
-        endfor
-        let expanded_cmdline = join(words)
-        let winnr = bufwinnr('^_shell$')
-        if ( winnr >= 0 )
-                echo winnr
-                execute winnr . 'wincmd w'
-                execute 'normal ggdG'
-        else
-                botright new _shell
-                resize -15
-                setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-                setlocal nonumber
-        endif
+	let isfirst = 1
+	let words = []
+	for word in split(a:cmdline)
+		if isfirst
+			let isfirst = 0  " don't change first word (shell command)
+		else
+		if word[0] =~ '\v[%#<]'
+			let word = expand(word)
+		endif
+			let word = shellescape(word, 1)
+		endif
+		call add(words, word)
+	endfor
+	let expanded_cmdline = join(words)
+	let winnr = bufwinnr('^_shell$')
+	if ( winnr >= 0 )
+		echo winnr
+		execute winnr . 'wincmd w'
+		execute 'normal ggdG'
+	else
+		botright new _shell
+		resize -15
+		setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+		setlocal nonumber
+	endif
 
-        call setline(1, '$ ' . expanded_cmdline)
-        "call append(line('$'), substitute(getline(1), '.', '=', 'g'))
-        silent execute '$read !'. expanded_cmdline
+	call setline(1, '$ ' . expanded_cmdline)
+	"call append(line('$'), substitute(getline(1), '.', '=', 'g'))
+	silent execute '$read !'. expanded_cmdline
 
-        1
+	1
 endfunction
 
 " invert syntax
@@ -186,3 +185,17 @@ function! InvSyntax()
 		execute 'syntax on'
 	endif
 endfunction
+
+" run astyle
+function! AstyleFormat()
+	" -n   don't save a .orig file
+	" -H   insert space after if/for/while ... and bracket
+	" -U   remove extra spaces around if/for/while ...
+	" -p   insert padding around operators 
+	" -c   convert tabs to spaces in non-indentation parts of the code
+	" -m0  align multi-line statements to paren on previous line
+	silent execute "!astyle -n --style=attach -pcHU --align-pointer=type --indent=tab -m0 " . expand("%:p")
+	e!
+	redraw!
+endfunction
+
