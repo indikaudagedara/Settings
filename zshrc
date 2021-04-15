@@ -2,7 +2,9 @@ PROMPT='%F{32}%~ $%f '
 alias ls='ls -G'
 alias ll='ls -l'
 
+
 export LSCOLORS=GxFxCxDxBxegedabagaced
+export PATH="$PATH:/Users/indikaudagedara/.dotnet/tools"
 
 autoload -Uz compinit
 compinit
