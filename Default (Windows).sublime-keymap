@@ -1,7 +1,0 @@
-[
-        { "keys": ["ctrl+."], "command": "next_bookmark" },
-        { "keys": ["ctrl+,"], "command": "prev_bookmark" },
-        { "keys": ["ctrl+b"], "command": "toggle_bookmark" },
-        { "keys": ["ctrl+shift+b"], "command": "clear_bookmarks" },
-        { "keys": ["alt+b"], "command": "select_all_bookmarks" }
-]
